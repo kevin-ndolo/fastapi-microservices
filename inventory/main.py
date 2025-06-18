@@ -43,7 +43,7 @@ class Product(HashModel):
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Hello From Inventory Service!"}
 
 
 @app.get("/products/")
