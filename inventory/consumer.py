@@ -28,7 +28,9 @@ while True:
                         product.save()
                         print(f"Updated product {product.pk}: new quantity {product.quantity}")
                     except NotFoundError:
-                        print(f"Product with id {obj['product_id']} not found in inventory!")
+                        # If the product does not exist in inventory, log the issue and add the order to the 'refund_order' stream for further processing or refund handling.
+                        print(f"Product with id {obj['product_id']} not found in inventory! Refunding order.")
+                        redis.xadd('refund_order', obj, '*')
     except Exception as e:
         print(f"Error reading from stream: {repr(e)}")
     time.sleep(1)
