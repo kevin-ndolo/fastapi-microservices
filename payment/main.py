@@ -33,7 +33,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:3000/"],  # Allows localhost for development
+    allow_origins=["*"],  # Allows localhost for development
     allow_credentials=True,
     allow_methods=["*"],  # Allows all methods
     allow_headers=["*"],  # Allows all headers
@@ -61,8 +61,8 @@ async def root():
 
 @app.get("/orders/{pk}")
 def get(pk: str):
-    return Order.get(pk)  # Retrieve the order by primary key   
-
+     return Order.get(pk)  # Retrieve the order by primary key   
+    
 
 
 @app.post("/orders/") 
