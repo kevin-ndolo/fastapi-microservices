@@ -11,11 +11,13 @@ REDIS_PORT = int(os.getenv("REDIS_PORT"))
 REDIS_USERNAME = os.getenv("REDIS_USERNAME")                 
 REDIS_PASSWORD = os.getenv("REDIS_PASSWORD")
 
+
 redis = get_redis_connection(
     host=REDIS_HOST,
     port=REDIS_PORT,
     username=REDIS_USERNAME,
     password=REDIS_PASSWORD,
+    db=0,
     decode_responses=True
 )
 

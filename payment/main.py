@@ -24,6 +24,7 @@ redis = get_redis_connection(
     port=REDIS_PORT,
     username=REDIS_USERNAME,
     password=REDIS_PASSWORD,
+    db=0,
     decode_responses=True
 )
 
@@ -69,8 +70,6 @@ async def create(request: Request, background_tasks: BackgroundTasks): # id, qua
     body = await request.json()
 
 
-    
-    # req = requests.get(f"http://product:8000/products/%s" % body["id"])
     req = requests.get(f"http://localhost:8000/products/{body['id']}")
 
     product = req.json()    
@@ -102,5 +101,5 @@ def order_completed(order: Order):
     order.status = "completed"
     order.save()
     
-    redis.xadd("order_completed", order.dict(), "*")  # Add the completed order to the Redis stream
+    redis.xadd("order_completed", order.dict(), '*')  # Add the completed order to the Redis stream
       
