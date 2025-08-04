@@ -1,7 +1,3 @@
-
----
-
-```markdown
 # 🧰 Inventory Microservice App
 
 A demo-ready inventory/order system powered by **FastAPI**, **Redis JSON DB**, **Redis Streams**, and a **React frontend**. Built to highlight clean microservice separation, async background processing, and a streamlined UI layer.
@@ -27,28 +23,31 @@ A demo-ready inventory/order system powered by **FastAPI**, **Redis JSON DB**, *
 
 ```
 .
-├── inventory
-│   ├── consumer.py
-│   ├── main.py
-│   └── __pycache__
-├── inventory-frontend
-│   ├── package.json
-│   ├── package-lock.json
-│   ├── public
-│   ├── README.md
-│   └── src
-├── payment
-│   ├── consumer.py
-│   ├── main.py
-│   └── __pycache__
-├── __pycache__
-│   └── main.cpython-312.pyc
+├── .env
+├── .gitignore
 ├── requirements.txt
-└── venv
-    ├── bin
-    ├── lib
-    └── pyvenv.cfg
-
+├── README.md
+├── venv/
+├── inventory/
+│   ├── consumer.py
+│   ├── main.py
+│   └── __pycache__/
+├── payment/
+│   ├── consumer.py
+│   ├── main.py
+│   └── __pycache__/
+└── inventory-frontend/
+    ├── package.json
+    ├── package-lock.json
+    ├── public/
+    ├── README.md
+    └── src/
+        ├── App.js
+        ├── index.js
+        └── components/
+            ├── Product.js
+            ├── Wrapper.js
+            └── ...
 ```
 
 ---
@@ -74,8 +73,8 @@ A demo-ready inventory/order system powered by **FastAPI**, **Redis JSON DB**, *
    ```bash
    uvicorn inventory.main:app --reload
    uvicorn payment.main:app --reload
-   python inventory/consumer.py
-   python payment/consumer.py
+   python -m inventory.consumer
+   python -m payment.consumer
    ```
 
 ---
@@ -97,11 +96,11 @@ A demo-ready inventory/order system powered by **FastAPI**, **Redis JSON DB**, *
 
 Since navigation links are partially implemented, here are the direct paths:
 
-| Path                  | Function                      |
-|----------------------|-------------------------------|
-| `/`                  | View & delete products        |
-| `/create`            | Create a new product          |
-| `/orders`            | View orders (read-only)       |
+| Path      | Function                |
+|-----------|-------------------------|
+| `/`       | View & delete products  |
+| `/create` | Create a new product    |
+| `/orders` | View orders (read-only) |
 
 📌 Use your browser address bar to manually navigate if links are missing.
 
@@ -154,10 +153,5 @@ Since navigation links are partially implemented, here are the direct paths:
 
 ---
 
-🧑‍💻 Built with care by Kevin 
-🏁 Demo-ready and modular enough to extend!
-
-```
-
----
-
+🧑‍💻 Built with care by Kevin  
+🏁 Demo
