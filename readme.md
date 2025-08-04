@@ -154,4 +154,3 @@ Since navigation links are partially implemented, here are the direct paths:
 ---
 
 🧑‍💻 Built with care by Kevin  
-🏁 Demo
